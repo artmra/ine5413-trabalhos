@@ -1,42 +1,77 @@
-# class grafo:
-# 	qtd_vertices = 0
-# 	qtd_arestas = 0
+class Nodo:
+		vizinhos = []
+		id = ''
+		rotulo = ''
+		ehRaiz = False
 
-# 	vertices = []
+		def __init__(self, id_, rotulo):
+			Nodo.id = id_
+			Nodo.rotulo = rotulo
 
-# 	def qtdVertices():
+		def vizinhos():
+			return vizinhos
+		
+		def adicionarVizinhos(self, vertice_vizinho, peso):
+			vizinhos.append([vertice_vizinho,peso])
 
-# 	def qtdArestas():
+		def ehRaiz():
+			return ehRaiz
 
-# 	def grau(v):
+		def rotulo():
+			return rotulo
 
-# 	def rotulo(v):
+		def adicionarRotulo(self, rotulo_):
+			rotulo = rotulo_
 
-# 	def vizinhos(v):
 
-# 	def haAresta(u, v):
+class Grafo:
+	qtd_vertices = 0
+	qtd_arestas = 0
+	vertices = []
 
-# 	def peso(u, v):
+	
+	
+	def adicionarVertice(self, id_, rotulo):
+		self.vertices.append(Nodo(id_, rotulo))
+		print(self.vertices[0].id, self.vertices[0].rotulo)
 
-# 	def ler(arquivo):
+	# def printartudo(self):
+	# 	for i in range(0, len(Grafo.vertices)):
+	# 		Grafo.vertices[i].printacarai()
+	# def __init__(self):
 
-# 	class nodo:
-# 		vizinhos = []
-# 		rotulo = ''
-# 		ehRaiz = False
+	# def qtdVertices():
+		
+	# def qtdArestas():
 
-# 		def vizinhos():
-# 			return vizinhos
+	# def grau(v):
 
-# 		def ehRaiz():
-# 			return ehRaiz
+	# def rotulo(v):
 
-# 		def rotulo():
-# 			return rotulo
+	# def vizinhos(v):
+
+	# def haAresta(u, v):
+
+	# def peso(u, v):
+
+	# def ler(arquivo):
+
+	
 
 a = open('facebook_santiago.net', 'r')
 nomes = []
-for i in range(100):
-	vertice, rotulo = a.readline().split(' ', 1)
-	print(vertice)
-	# print(a.readline().split(' ', 1))
+grafo = Grafo()
+# print(len(grafo.vertices))
+
+for i in a:
+	linha = i.split()
+	lista = []
+	if (linha[0] == '*vertices'):
+		# print(linha[1])
+		for j in range(int(linha[1])):
+			info1, info2 = a.readline().split(' ', 1)
+			grafo.adicionarVertice(info1, info2)
+		#endfor
+	# else:
+	# 	#cria ligações
+
