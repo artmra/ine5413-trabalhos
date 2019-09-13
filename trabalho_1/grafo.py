@@ -1,77 +1,75 @@
-class Nodo:
-		vizinhos = []
-		id = ''
-		rotulo = ''
-		ehRaiz = False
+import sys
+class Vertice:
 
-		def __init__(self, id_, rotulo):
-			Nodo.id = id_
-			Nodo.rotulo = rotulo
+    def __init__(self, numero, rotulo):
+        self.numero_ = numero
+        self.rotulo_ = rotulo
+        self.vizinhos_ = []
 
-		def vizinhos():
-			return vizinhos
-		
-		def adicionarVizinhos(self, vertice_vizinho, peso):
-			vizinhos.append([vertice_vizinho,peso])
+    def grau(self):
+        return len(self.vizinhos_)
+    
+    def rotulo(self):
+        return self.rotulo_
 
-		def ehRaiz():
-			return ehRaiz
-
-		def rotulo():
-			return rotulo
-
-		def adicionarRotulo(self, rotulo_):
-			rotulo = rotulo_
-
+    def vizinhos(self):
+        return self.vizinhos_
+    
+    def ha_aresta(self, v):
+        for i in self.vizinhos_:
+            if i[0] == v:
+                return True
+        return False
+    
+    def peso(self, v):
+        for i in self.vizinhos_:
+            if i[0] == v:
+                return i[1]
 
 class Grafo:
-	qtd_vertices = 0
-	qtd_arestas = 0
-	vertices = []
+    
+    def __init__(self, arquivo):
+        self.vertices = []
+        self.n_arestas = 0
+        self.ler(arquivo)
+    
+    def qtd_vertices(self):
+    	return len(self.vertices)
+    
+    def qtd_arestas(self):
+    	return self.n_arestas
+    
+    def grau(self, v):
+    	return v.grau()
+    
+    def rotulo(self, v):
+    	return v.rotulo()
+    
+    def vizinhos(self, v):
+    	return v.vizinhos()
+    
+    def ha_aresta(self, u, v):
+        return True if u.ah_aresta(v) else False
+    
+    def peso(self, u, v):
+        return u.peso(v) if u.ah_aresta(v) else sys.maxsize
+    
+    def ler(self, arquivo):
+        a = open(arquivo, 'r')
+        for i in a:
+            print (10000)
+            linha = i.split()
+            if (linha[0] == '*vertices'):
+                for j in range(int(linha[1])):
+                    info1, info2 = a.readline().split(' ', 1)
+                    self.vertices.append([int(info1), info2.rstrip()])
+            la = 1
+            if (linha[0] == '*edges'):
+                for k in a:
+                    print(la, k)
+                    la = la + 1
 
-	
-	
-	def adicionarVertice(self, id_, rotulo):
-		self.vertices.append(Nodo(id_, rotulo))
-		print(self.vertices[0].id, self.vertices[0].rotulo)
+        # print(self.vertices)
 
-	# def printartudo(self):
-	# 	for i in range(0, len(Grafo.vertices)):
-	# 		Grafo.vertices[i].printacarai()
-	# def __init__(self):
-
-	# def qtdVertices():
-		
-	# def qtdArestas():
-
-	# def grau(v):
-
-	# def rotulo(v):
-
-	# def vizinhos(v):
-
-	# def haAresta(u, v):
-
-	# def peso(u, v):
-
-	# def ler(arquivo):
-
-	
-
-a = open('facebook_santiago.net', 'r')
-nomes = []
-grafo = Grafo()
-# print(len(grafo.vertices))
-
-for i in a:
-	linha = i.split()
-	lista = []
-	if (linha[0] == '*vertices'):
-		# print(linha[1])
-		for j in range(int(linha[1])):
-			info1, info2 = a.readline().split(' ', 1)
-			grafo.adicionarVertice(info1, info2)
-		#endfor
-	# else:
-	# 	#cria ligações
+grafo = Grafo('facebook_santiago.net')
 
