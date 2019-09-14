@@ -18,23 +18,21 @@ class Vertice:
     def ha_aresta(self, v):
         for i in self.vizinhos_:
             if i[0] == v:
-                return True
-        return False
-    
-    def peso(self, v):
-        for i in self.vizinhos_:
-            if i[0] == v:
                 return i[1]
+        return -1
+
+    def adicionar_vizinho(self, v, peso):
+        self.vizinhos_.append([v, peso])
 
 class Grafo:
     
     def __init__(self, arquivo):
-        self.vertices = []
-        self.n_arestas = 0
+        self.vertices_ = []
+        self.n_arestas_ = 0
         self.ler(arquivo)
     
     def qtd_vertices(self):
-    	return len(self.vertices)
+    	return len(self.vertices_)
     
     def qtd_arestas(self):
     	return self.n_arestas
@@ -49,10 +47,10 @@ class Grafo:
     	return v.vizinhos()
     
     def ha_aresta(self, u, v):
-        return True if u.ah_aresta(v) else False
+        return True if u.ah_aresta(v) > (-1) else False
     
     def peso(self, u, v):
-        return u.peso(v) if u.ah_aresta(v) else sys.maxsize
+        return u.ah_aresta(v) if u.ah_aresta(v) > (-1) else sys.maxsize
     
     def ler(self, arquivo):
         a = open(arquivo, 'r')
@@ -62,13 +60,13 @@ class Grafo:
             if (linha[0] == '*vertices'):
                 for j in range(int(linha[1])):
                     info1, info2 = a.readline().split(' ', 1)
-                    self.vertices.append([int(info1), info2.rstrip()])
-            la = 1
+                    self.vertices_.append(Vertice(int(info1), info2.rstrip()))
             if (linha[0] == '*edges'):
                 for k in a:
-                    print(la, k)
-                    la = la + 1
-
+                    v, u, peso = k.split()
+                    self.vertices_[int(v) - 1].adicionar_vizinho(u, float(peso))
+                    self.vertices_[int(u) - 1].adicionar_vizinho(v, float(peso))
+                    self.n_arestas_ = self.n_arestas_ + 1
         # print(self.vertices)
 
 grafo = Grafo('facebook_santiago.net')
