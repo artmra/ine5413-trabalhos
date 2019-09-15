@@ -82,3 +82,20 @@ class Grafo:
                 return i[1]
         return sys.maxsize
 
+    def arestas(self):
+        arestas = []
+        for i in range(len(self.vertices_)):
+            for v in self.vertices_[i][1]:
+                if (i < v[0]):
+                    if not ((i, v[0]) in arestas):
+                    # if (arestas.count((i, v[0])) == 0):
+                        arestas.append((i, v[0]))
+                else:
+                    if not ((v[0], i) in arestas):
+                    # if (arestas.count((v[0], i)) == 0):
+                        arestas.append((v[0], i))
+        # for i in arestas:
+        #     print(i)
+        return arestas
+# grafo = Grafo('facebook_santiago.net')
+# print(grafo.arestas())
