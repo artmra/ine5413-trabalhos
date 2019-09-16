@@ -1,4 +1,3 @@
-from grafo import Grafo
 def bfs(grafo, origem):
     C = []
     D = []
