@@ -68,7 +68,7 @@ class Grafo:
     # ****O ÍNDICE DIZ RESPEITO À UMA LISTA QUE COMEÇOU A SER ORDENADA DO 0****
     #
     def ha_aresta(self, u, v):
-        for i in self.vertices_[u]:
+        for i in self.vertices_[u][1]:
             if (v) == i[0]:
                 return True
         return False
@@ -79,7 +79,7 @@ class Grafo:
     # ****O ÍNDICE DIZ RESPEITO À UMA LISTA QUE COMEÇOU A SER ORDENADA DO 0****
     #
     def peso(self, u, v):
-        for i in self.vertices_[u]:
+        for i in self.vertices_[u][1]:
             if (v) == i[0]:
                 return i[1]
         return sys.maxsize
