@@ -2,13 +2,16 @@ def bfs(grafo, origem):
     C = []
     D = []
     A = []
+    # configurando todos os vertices
     for _ in grafo.vertices_:
         C.append(False)
         D.append(-1)
         A.append(None)
+    # configurando vertice de origem
     C[origem - 1] = True
     D[origem - 1] = 0
 
+    # preparando fila de visitas
     vertices_a_visitar = []
     vertices_a_visitar.append(origem - 1)
 

@@ -20,6 +20,8 @@ class Grafo:
                     v, u, peso = k.split()
                     #
                     # Adiciona u à lista de vizinhos de v,  além do peso da aresta que os liga
+                    # vizinhos[0] indice do outro vertice
+                    # vizinhos[1] peso da arco/aresta pra ser mais elegante
                     #
                     self.vertices_[int(v) - 1][1].append([int(u)-1, float(peso)])
                     #
