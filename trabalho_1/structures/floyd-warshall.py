@@ -4,29 +4,26 @@ import sys
 # Ncolunas * nLinhaAtual + nColunaAtual
 # i*col + j
 def floyd_warshall(grafo):
-    D = []
+    vertices = grafo.qtd_vertices()
+    row, col = vertices, vertices
+    D = [[0 for x in range(row)] for y in range(col)]
 
-    # print(grafo.peso(0, 134))
     # inicializando matrix com zero
-    col = grafo.qtd_vertices()
-    for i in range (col):
-        for j in range (col):
+    for i in range (vertices):
+        for j in range (vertices):
             if i == j:
-                D.append(0)
+                D[i][j] = 0
             elif (grafo.ha_aresta(i,j)):
-                D.append(grafo.peso(i,j))
+                D[i][j] = grafo.peso(i,j)
             else:
-                # D.append(1000)
-                D.append(sys.maxsize)
-
-    for k in range (col):
-        for i in range (col):
-            for j in range (col):
-                if (D[i*col + j] > D[i*col + k] + D[k*col + j]):
-                    D[i*col + j] = D[i*col + k] + D[k*col + j]
-                    # print("qualquer coisinha")
+                D[i][j] = sys.maxsize
+    
+    for k in range (vertices):
+        for i in range (vertices):
+            for j in range (vertices):
+                D[i][j] = min(D[i][j], D[i][k] + D[k][j])
     print(D)
 
-grafo = Grafo('facebook_santiago.net')
+grafo = Grafo('fln_pequena.net')
 floyd_warshall(grafo)
     
