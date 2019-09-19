@@ -22,27 +22,18 @@ def dijkstra (grafo, origem):
         for v in grafo.vizinhos(u):
             if C[v[0]] == False:
                 if D[v[0]] > D[u] + v[1]:
-                    # print("sai de ", u, " e cheguei em ", v[0], "com peso ", (D[u] + v[1]))
                     D[v[0]] = D[u] + v[1]
                     A[v[0]] = u
-            # endfor
-    # print("1:",D[2],A[2])
+    # printando a saida correta
     vertices = grafo.qtd_vertices()
     row = vertices
     for i in range (row):
-        # print(A[i])
-        # print(A[A[1]])
-    #     print(i,":", end=" ")
-        # print(A[i])
-        # A[A[i]] != 2 and
+        print(i, end=": ")
         j = i
-        while (A[j] != None and A[j] != 2):
-            print(A[A[j]], end =" ")
-            j += 1
-    #     print("\n")
-
-    # print(origem)
-    # print(D,A)
+        while (A[j] != None):
+            print(A[j], end =" ")
+            j = A[j]
+        print("d=",D[i])
     return [D, A]
 
 def getKeysByValue(dictOfElements, valueToFind):
