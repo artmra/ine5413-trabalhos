@@ -94,8 +94,4 @@ class Grafo:
                 else:
                     if not ((v[0], i) in arestas):
                         arestas.append((v[0], i))
-        # for i in arestas:
-        #     print(i)
         return arestas
-# grafo = Grafo('facebook_santiago.net')
-# print(grafo.)

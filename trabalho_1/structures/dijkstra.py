@@ -1,6 +1,4 @@
 import math
-from grafo import Grafo
-
 def dijkstra (grafo, origem):
     D = []
     A = []
@@ -24,10 +22,27 @@ def dijkstra (grafo, origem):
         for v in grafo.vizinhos(u):
             if C[v[0]] == False:
                 if D[v[0]] > D[u] + v[1]:
-                    print("sai de ", u, " e cheguei em ", v[0], "com peso ", (D[u] + v[1]))
+                    # print("sai de ", u, " e cheguei em ", v[0], "com peso ", (D[u] + v[1]))
                     D[v[0]] = D[u] + v[1]
                     A[v[0]] = u
             # endfor
+    # print("1:",D[2],A[2])
+    vertices = grafo.qtd_vertices()
+    row = vertices
+    for i in range (row):
+        # print(A[i])
+        # print(A[A[1]])
+    #     print(i,":", end=" ")
+        # print(A[i])
+        # A[A[i]] != 2 and
+        j = i
+        while (A[j] != None and A[j] != 2):
+            print(A[A[j]], end =" ")
+            j += 1
+    #     print("\n")
+
+    # print(origem)
+    # print(D,A)
     return [D, A]
 
 def getKeysByValue(dictOfElements, valueToFind):
@@ -37,6 +52,3 @@ def getKeysByValue(dictOfElements, valueToFind):
         if item[1] == valueToFind:
             listOfKeys.append(item[0])
     return  listOfKeys[0]
-
-grafo = Grafo('facebook_santiago.net')
-dijkstra(grafo, 0)

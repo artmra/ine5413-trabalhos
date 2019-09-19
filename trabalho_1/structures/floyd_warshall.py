@@ -1,11 +1,9 @@
-from grafo import Grafo
 import sys
 
-# Ncolunas * nLinhaAtual + nColunaAtual
-# i*col + j
 def floyd_warshall(grafo):
     vertices = grafo.qtd_vertices()
     row, col = vertices, vertices
+
     D = [[0 for x in range(row)] for y in range(col)]
 
     # inicializando matrix com zero
@@ -22,8 +20,9 @@ def floyd_warshall(grafo):
         for i in range (vertices):
             for j in range (vertices):
                 D[i][j] = min(D[i][j], D[i][k] + D[k][j])
-    print(D)
-
-grafo = Grafo('fln_pequena.net')
-floyd_warshall(grafo)
+    for i in range(row):
+        print(i,":", end=" ")
+        for j in range(col):
+            print(D[i][j], end =" ")
+        print("\n")
     

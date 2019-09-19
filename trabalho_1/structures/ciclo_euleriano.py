@@ -13,11 +13,14 @@ def algoritmo_hierholzer(grafo):
     r, ciclo = buscar_subciclo_euleriano(grafo, v, C)
 
     if r == False:
+        print("0")
         return [False, None]
     else:
         for i in C.values():
             if i == False:
+                print("nope")
                 return [False, None]
+        print("1\n", ciclo)
         return [True, ciclo]
 
 
