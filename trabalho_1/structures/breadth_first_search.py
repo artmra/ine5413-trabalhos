@@ -26,13 +26,15 @@ def bfs(grafo, origem):
                 vertices_a_visitar.append(v[0]) 
 
     print(D)
-    aux = 0
-    while True:
-        level = [k for k in D if D[k] == aux]
+    for i in range(len(A)):
+        print (i, " = ", D[i])
+    # aux = 0
+    # while True:
+    #     level = [k for k in D if D[k] == aux]
 
-        if level:
-            print(aux,": ",level)
-            aux += 1
-        else:
-            break  
+    #     if level:
+    #         print(aux,": ",level)
+    #         aux += 1
+    #     else:
+    #         break  
     return [D, A]
