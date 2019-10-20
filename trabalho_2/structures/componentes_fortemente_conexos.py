@@ -1,2 +1,4 @@
 # import sys
-def cfc:
+def cfc(grafo):
+	C, T, A, F = dfs(grafo)
+	
