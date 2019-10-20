@@ -32,6 +32,26 @@ class Grafo:
                     # Incrementa o número de arestas
                     #
                     self.n_arestas_ = self.n_arestas_ + 1
+            else:
+                for k in a:
+                    v, u, peso = k.split()
+                    #
+                    # Adiciona u à lista de vizinhos de v,  além do peso da aresta que os liga
+                    # vizinhos[0] indice do outro vertice
+                    # vizinhos[1] peso da arco/aresta pra ser mais elegante
+                    #
+                    self.vertices_[int(v) - 1][1].append([int(u)-1, float(peso)])
+                    #
+                    # Adiciona v à lista de vizinhos de u, além do peso da aresta que os liga
+                    #
+                    if len(self.vertices_[int(u) - 1] == 2):
+                        self.vertices_[int(u) - 1].append([])
+                    
+                    self.vertices_[int(u) - 1][2].append([int(v)-1, float(peso)])
+                    #
+                    # Incrementa o número de arestas
+                    #
+                    self.n_arestas_ = self.n_arestas_ + 1
     
     #
     # Retorna todos os vértices presentes no grafo.
@@ -61,6 +81,12 @@ class Grafo:
     #
     def vizinhos(self, v):
     	return self.vertices_[v][1]
+
+    def vizinhos_saintes(self, v):
+        return self.vertices_[v][1]
+
+    def vizinhos_entrantes(self, v):
+        return self.vertices_[v][2]
     
     #
     # Se existir uma aresta {grafo.vertices_[u], grafo.vertices_[v]} no grafo 
