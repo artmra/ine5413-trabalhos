@@ -1,4 +1,5 @@
 import sys
+import copy
 
 class Grafo:
     
@@ -53,6 +54,12 @@ class Grafo:
                     #
                     self.n_arestas_ = self.n_arestas_ + 1
     
+    def transpor_grafo(self):
+        for v in self.vertices_:
+            saintes = v[1][:]
+            entrantes = v[2][:]
+            v[1] = entrantes
+            v[2] = saintes
     #
     # Retorna todos os vértices presentes no grafo.
     #
@@ -81,10 +88,18 @@ class Grafo:
     #
     def vizinhos(self, v):
     	return self.vertices_[v][1]
-
+    
+    #
+    # Retorna todos os vizinhos saintes de um vértice no indice v do grafo.
+    # ****O ÍNDICE DIZ RESPEITO À UMA LISTA QUE COMEÇOU A SER ORDENADA DO 0****
+    #
     def vizinhos_saintes(self, v):
         return self.vertices_[v][1]
 
+    #
+    # Retorna todos os vizinhos entrantes de um vértice no indice v do grafo.
+    # ****O ÍNDICE DIZ RESPEITO À UMA LISTA QUE COMEÇOU A SER ORDENADA DO 0****
+    #
     def vizinhos_entrantes(self, v):
         return self.vertices_[v][2]
     
