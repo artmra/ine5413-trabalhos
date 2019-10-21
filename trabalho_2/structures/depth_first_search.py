@@ -3,7 +3,7 @@ from .depth_first_search_visit import dfs_visit
 def dfs(grafo):
     V = grafo.vertices_
     # configurando todos os vértices
-    C = dict([(i, False) for i,v in enumerate(gravo.vertices_)])
+    C = dict([(i, False) for i,v in enumerate(grafo.vertices_)])
     T = dict([(i, sys.maxsize) for i,v in enumerate(grafo.vertices_)])
     F = dict([(i, sys.maxsize) for i,v in enumerate(grafo.vertices_)])
     A = dict([(i, None) for i,v in enumerate(grafo.vertices_)])
@@ -18,7 +18,7 @@ def dfs(grafo):
 def dfs_adaptado(grafo, v_ordered_by_f):
     V = grafo.vertices_
     # configurando todos os vértices
-    C = dict([(i, False) for i,v in enumerate(gravo.vertices_)])
+    C = dict([(i, False) for i,v in enumerate(grafo.vertices_)])
     T = dict([(i, sys.maxsize) for i,v in enumerate(grafo.vertices_)])
     F = dict([(i, sys.maxsize) for i,v in enumerate(grafo.vertices_)])
     A = dict([(i, None) for i,v in enumerate(grafo.vertices_)])

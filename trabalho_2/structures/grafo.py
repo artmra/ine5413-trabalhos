@@ -28,7 +28,8 @@ class Grafo:
                     #
                     # Adiciona v à lista de vizinhos de u, além do peso da aresta que os liga
                     #
-                    self.vertices_[int(u) - 1][1].append([int(v)-1, float(peso)])
+                    #------------------------ descomentar se for dirigido
+                    # self.vertices_[int(u) - 1][1].append([int(v)-1, float(peso)])
                     #
                     # Incrementa o número de arestas
                     #
