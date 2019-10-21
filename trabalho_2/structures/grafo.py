@@ -33,7 +33,7 @@ class Grafo:
                     # Incrementa o número de arestas
                     #
                     self.n_arestas_ = self.n_arestas_ + 1
-            else:
+            if (linha[0] == '*arcs'):
                 for k in a:
                     v, u, peso = k.split()
                     #

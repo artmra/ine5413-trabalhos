@@ -1,4 +1,5 @@
 import sys
+from .depth_first_search_visit import dfs_visit
 def dfs(grafo):
     V = grafo.vertices_
     # configurando todos os vértices

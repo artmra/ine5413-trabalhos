@@ -1,7 +1,11 @@
-# import sys
+import copy
+from .depth_first_search import dfs, dfs_adaptado
 def cfc(grafo):
 	C, T, A, F = dfs(grafo)
 
-	Gt = 
+	grafo_t = copy.deepcopy(grafo)
+	grafo_t.trasnpor_grafo()
 
-	for v in grafo.vertices_:
+	Ct, Tt, At, Ft = dfs_adaptado(grafo)
+
+	return At
