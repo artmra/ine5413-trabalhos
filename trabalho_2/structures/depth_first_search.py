@@ -27,5 +27,5 @@ def dfs_adaptado(grafo, v_ordered_by_f):
     for v in v_ordered_by_f:
         if (not C[v]):
             # DFS-Visit é executado
-            tempo = dfs_visit(grafo, u, C, T, A, F, tempo)
+            tempo = dfs_visit(grafo, v, C, T, A, F, tempo)
     return [C, T, A, F]

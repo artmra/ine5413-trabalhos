@@ -21,8 +21,6 @@ class Grafo:
                     v, u, peso = k.split()
                     #
                     # Adiciona u à lista de vizinhos de v,  além do peso da aresta que os liga
-                    # vizinhos[0] indice do outro vertice
-                    # vizinhos[1] peso da arco/aresta pra ser mais elegante
                     #
                     self.vertices_[int(v) - 1][1].append([int(u)-1, float(peso)])
                     #
@@ -35,18 +33,20 @@ class Grafo:
                     #
                     self.n_arestas_ = self.n_arestas_ + 1
             if (linha[0] == '*arcs'):
+                print('grafo dirigido: ')
                 for k in a:
                     v, u, peso = k.split()
                     #
-                    # Adiciona u à lista de vizinhos de v,  além do peso da aresta que os liga
-                    # vizinhos[0] indice do outro vertice
-                    # vizinhos[1] peso da arco/aresta pra ser mais elegante
+                    # Adiciona u à lista de vizinhos saintes de v,  além do peso da aresta que os liga
                     #
+                    if len(self.vertices_[int(v) - 1]) == 2:
+                        self.vertices_[int(v) - 1].append([])
+                    
                     self.vertices_[int(v) - 1][1].append([int(u)-1, float(peso)])
                     #
-                    # Adiciona v à lista de vizinhos de u, além do peso da aresta que os liga
+                    # Adiciona v à lista de vizinhos entrantes de u, além do peso da aresta que os liga
                     #
-                    if len(self.vertices_[int(u) - 1] == 2):
+                    if len(self.vertices_[int(u) - 1]) == 2:
                         self.vertices_[int(u) - 1].append([])
                     
                     self.vertices_[int(u) - 1][2].append([int(v)-1, float(peso)])
@@ -57,8 +57,13 @@ class Grafo:
     
     def transpor_grafo(self):
         for v in self.vertices_:
+            # print(v[0])
+            # print('saintes: ')
+            # print(v[1])
+            # print('entrantes: ')
+            # print(v[2])
             saintes = v[1][:]
-            entrantes = v[2][:]
+            entrantes = v[2]
             v[1] = entrantes
             v[2] = saintes
     #

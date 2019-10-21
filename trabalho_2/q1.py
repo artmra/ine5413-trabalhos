@@ -1,7 +1,7 @@
 from structures.grafo import Grafo
 from structures.componentes_fortemente_conexos import cfc
 
-grafo = Grafo('facebook_santiago.net')
+grafo = Grafo('facebook_santiago_dirigido.net')
 
 print("Quantidade de vertices : ",grafo.qtd_vertices())
 print("Quantidade de arestas", grafo.qtd_arestas())
