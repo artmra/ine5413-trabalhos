@@ -5,6 +5,7 @@ grafo = Grafo('facebook_santiago_dirigido.net')
 
 print("Quantidade de vertices : ",grafo.qtd_vertices())
 print("Quantidade de arestas", grafo.qtd_arestas())
+# print(cfc(grafo).values())
 cfc(grafo)
 # print("Digite o vertice para descobrir o seu grau:")
 # u = int(input())
