@@ -3,7 +3,7 @@ def dfs_visit(grafo, v, C, T, A, F, tempo, adaptado):
     tempo = tempo + 1
     T[v] = tempo
     if adaptado:
-        print(v, ';', end = '')
+        print(v, ';', end = '', )
 
     for u in grafo.vizinhos_saintes(v):
         if (not C[u[0]]):

@@ -6,19 +6,19 @@ def prim_(grafo):
 	K = dict([(i, sys.maxsize) for i,v in enumerate(grafo.vertices_)])
 	K[r] = 0
 	Q = [[i for i in range(len(grafo.vertices_))], K]
-	# print(Q[0])
+
+	soma = 0
+	arestas = []
+
 	while Q[0]:
 		Q[0].sort(key = lambda u : K[u], reverse = False)
 		u = Q[0].pop(0)
-		# print('u da vez = ', u)
 
 		for v, peso in grafo.vizinhos(u):
-			# print(v, peso)
 			if Q[0].count(v) and (peso < K[v]):
+				soma = soma + peso
+				arestas.append([u, v])
 				A[v] = u
 				K[v] = peso
-			# if v == 396 or v == 627:
-			# 	print (grafo.vertices_[u])
-			# 	print (v, '\n')
-	# print(A.values())
-	return
+	
+	return [A, soma, arestas]
