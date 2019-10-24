@@ -1,7 +1,7 @@
 import copy
 import sys
 def prim_(grafo):
-	r = 10
+	r = 0
 	A = dict([(i, None) for i,v in enumerate(grafo.vertices_)])
 	K = dict([(i, sys.maxsize) for i,v in enumerate(grafo.vertices_)])
 	K[r] = 0
@@ -11,13 +11,18 @@ def prim_(grafo):
 	arestas = []
 
 	while Q[0]:
+		# i = 0
+		# for v in K.values():
+		# 	print(i, ':', v)
+		# 	i = i + 1
 		Q[0].sort(key = lambda u : K[u], reverse = False)
 		u = Q[0].pop(0)
+		# print(Q[0])
 
 		for v, peso in grafo.vizinhos(u):
 			if Q[0].count(v) and (peso < K[v]):
 				soma = soma + peso
-				arestas.append([u, v])
+				arestas.append([grafo.rotulo(u), grafo.rotulo(v)])
 				A[v] = u
 				K[v] = peso
 	
