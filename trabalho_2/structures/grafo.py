@@ -33,7 +33,6 @@ class Grafo:
                     #
                     self.n_arestas_ = self.n_arestas_ + 1
             if (linha[0] == '*arcs'):
-                print('grafo dirigido: ')
                 for k in a:
                     v, u, peso = k.split()
                     #
