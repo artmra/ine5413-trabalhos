@@ -10,7 +10,7 @@ def dfs(grafo):
 
     for v in range(len(V)):
         if (not C[v]):
-            tempo = dfs_visit(grafo, v, C, T, A, F, tempo, False)
+            tempo, no_used = dfs_visit(grafo, v, C, T, A, F, tempo, [], False)
     
     return [C, T, A, F]
 
@@ -23,7 +23,10 @@ def dfs_adaptado(grafo, v_ordered_by_f):
 
     for v in v_ordered_by_f:
         if (not C[v]):
-            tempo = dfs_visit(grafo, v, C, T, A, F, tempo, True)
+            tempo, cfc = dfs_visit(grafo, v, C, T, A, F, tempo, [], True)
+            print(cfc.pop(0), end = '')
+            for  v in cfc:
+                print(',', v, end = '')
             print('\n')
     
     return [C, T, A, F]

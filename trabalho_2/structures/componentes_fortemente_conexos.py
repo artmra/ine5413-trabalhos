@@ -9,6 +9,6 @@ def cfc(grafo):
 	v_ordered_by_f = [i for i in range(len(grafo.vertices_))]
 	v_ordered_by_f.sort(key = lambda u : F[u], reverse = True)
 
-	Ct, Tt, At, Ft = dfs_adaptado(grafo, v_ordered_by_f)
+	Ct, Tt, At, Ft = dfs_adaptado(grafo_t, v_ordered_by_f)
 
 	return At
