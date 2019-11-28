@@ -1,6 +1,6 @@
-from grafo import Grafo
-from dfs import dfs
-from bfs import bfs
+from structures.grafo import Grafo
+from structures.dfs import dfs
+from structures.bfs import bfs
 import sys
 def hopcroft_karp(grafo):
     D = dict([(i+1, sys.maxsize) for i, v in enumerate(grafo.vertices_)])

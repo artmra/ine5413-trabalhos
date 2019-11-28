@@ -1,5 +1,5 @@
 import sys
-from grafo import Grafo
+from structures.grafo import Grafo
 
 def ed_k(Grafo, origem, destino):
 	n = Grafo.qtd_vertices()

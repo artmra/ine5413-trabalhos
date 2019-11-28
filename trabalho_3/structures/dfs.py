@@ -1,5 +1,5 @@
 import sys
-from grafo import Grafo
+from structures.grafo import Grafo
 def dfs(grafo, Mate, x, D):
     if (x != None):
         for y in grafo.vizinhos(x):

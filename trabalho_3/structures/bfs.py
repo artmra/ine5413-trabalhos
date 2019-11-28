@@ -1,4 +1,4 @@
-from grafo import Grafo
+from structures.grafo import Grafo
 import sys
 def bfs(grafo, Mate, D):
     Q = []
