@@ -21,15 +21,14 @@ class Grafo:
                     self.vertices_.append([i + 1, []])
                 # salva o numero de arcos/arestas do grafo
                 self.n_arestas_ = int(linha[3])
-                if linha[1] == 'sp':
+                if linha[1] == 'sp' or linha[1] == 'dir':
                     # se o grafo for dirigido
                     for j in a:
                         linha_ = j.split()
                         if linha_[0] == 'a':
-                            # print(linha_)
                             u = int(linha_[1]) - 1
                             v = int(linha_[2]) - 1
-                            peso = float(linha[3])
+                            peso = float(linha_[3])
                             self.vertices_[u][1].append([v, peso])
                 else:
                     # se o grafo for não dirigido
@@ -42,64 +41,9 @@ class Grafo:
                             self.X.add(u)
                             self.vertices_[v][1].append([u, 1])
                             self.Y.add(v)
-    # def __init__(self, arquivo):
-    #     self.vertices_ = []
-    #     self.n_arestas_ = 0
-    #     a = open(arquivo, 'r')
-    #     for i in a:
-    #         linha = i.split()
-    #         if (linha[0] == '*vertices'):
-    #             for j in range(int(linha[1])):
-    #                 _ , rotulo = a.readline().split(' ', 1)
-    #                 # 
-    #                 # Adiciona um vértice(lista de 2 elementos, sendo o primeiro o rótulo e o segundo os vizinhos) ao grafo
-    #                 #
-    #                 self.vertices_.append([rotulo, []])
-    #         if (linha[0] == '*edges'):
-    #             for k in a:
-    #                 v, u, peso = k.split()
-    #                 #
-    #                 # Adiciona u à lista de vizinhos de v,  além do peso da aresta que os liga
-    #                 #
-    #                 self.vertices_[int(v) - 1][1].append([int(u)-1, float(peso)])
-    #                 #
-    #                 # Adiciona v à lista de vizinhos de u, além do peso da aresta que os liga
-    #                 #
-    #                 #------------------------ descomentar se for dirigido
-    #                 self.vertices_[int(u) - 1][1].append([int(v)-1, float(peso)])
-    #                 #
-    #                 # Incrementa o número de arestas
-    #                 #
-    #                 self.n_arestas_ = self.n_arestas_ + 1
-    #         if (linha[0] == '*arcs'):
-    #             for k in a:
-    #                 v, u, peso = k.split()
-    #                 #
-    #                 # Adiciona u à lista de vizinhos saintes de v,  além do peso da aresta que os liga
-    #                 #
-    #                 if len(self.vertices_[int(v) - 1]) == 2:
-    #                     self.vertices_[int(v) - 1].append([])
-                    
-    #                 self.vertices_[int(v) - 1][1].append([int(u)-1, float(peso)])
-    #                 #
-    #                 # Adiciona v à lista de vizinhos entrantes de u, além do peso da aresta que os liga
-    #                 #
-    #                 if len(self.vertices_[int(u) - 1]) == 2:
-    #                     self.vertices_[int(u) - 1].append([])
-                    
-    #                 self.vertices_[int(u) - 1][2].append([int(v)-1, float(peso)])
-    #                 #
-    #                 # Incrementa o número de arestas
-    #                 #
-    #                 self.n_arestas_ = self.n_arestas_ + 1
     
     def transpor_grafo(self):
         for v in self.vertices_:
-            # print(v[0])
-            # print('saintes: ')
-            # print(v[1])
-            # print('entrantes: ')
-            # print(v[2])
             saintes = v[1][:]
             entrantes = v[2]
             v[1] = entrantes
@@ -180,5 +124,3 @@ class Grafo:
                     if not ((v[0], i) in arestas):
                         arestas.append((v[0], i))
         return arestas
-
-grafo = Grafo('USA-road-d.NY.gr')
