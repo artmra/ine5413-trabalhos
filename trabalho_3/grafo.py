@@ -26,7 +26,7 @@ class Grafo:
                     for j in a:
                         linha_ = j.split()
                         if linha_[0] == 'a':
-                            print(linha_)
+                            # print(linha_)
                             u = int(linha_[1]) - 1
                             v = int(linha_[2]) - 1
                             peso = float(linha[3])

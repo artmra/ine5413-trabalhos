@@ -1,4 +1,6 @@
 from grafo import Grafo
+from dfs import dfs
+from bfs import bfs
 import sys
 def hopcroft_karp(grafo):
     D = []
