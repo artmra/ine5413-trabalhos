@@ -6,6 +6,8 @@ class Grafo:
     def __init__(self, arquivo):
         self.vertices_ = []
         self.n_arestas_ = 0
+        self.X = []
+        self.Y = []
         n_arestas = 0
         a = open(arquivo, 'r')
         for i in a:
@@ -37,7 +39,9 @@ class Grafo:
                             u = int(linha_[1]) - 1
                             v = int(linha_[2]) - 1
                             self.vertices_[u][1].append([v, 1])
+                            self.X.append(u)
                             self.vertices_[v][1].append([u, 1])
+                            self.Y.append(v)
     # def __init__(self, arquivo):
     #     self.vertices_ = []
     #     self.n_arestas_ = 0
